@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = Task.all.page(params[:page]).per(3)
   end
   
   def show 
@@ -53,6 +53,3 @@ class TasksController < ApplicationController
     params.require(:task).permit(:content , :status)
   end
 end
-
-#タスク投稿できなくなった
-#ステータスフォームが入力できない
